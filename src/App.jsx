@@ -30,8 +30,8 @@ export default function App() {
             <img src={`${import.meta.env.BASE_URL}GroceryICON.png`} alt="Grocery" className="w-full h-full object-cover" />
           </div>
           <div className="leading-none">
-            <span className="text-sm font-bold text-gray-900 tracking-tight">Nananast </span>
-            <span className="text-sm font-bold text-brand-600 tracking-tight">Grocery</span>
+            <span className="text-sm font-bold text-gray-900 tracking-tight">La liste </span>
+            <span className="text-sm font-bold text-brand-600 tracking-tight">de courses</span>
           </div>
           {tab === 'shopping' && selectedRecipes.length > 0 && (
             <div className="ml-auto bg-brand-50 text-brand-700 rounded-full px-3 py-1 flex items-center gap-1">
