@@ -26,8 +26,8 @@ export default function App() {
       {/* Header */}
       <header className="sticky top-0 z-10 bg-white/90 backdrop-blur-xl border-b border-gray-100">
         <div className="flex items-center gap-3 px-4 h-14">
-          <div className="w-8 h-8 rounded-xl bg-brand-600 flex items-center justify-center flex-shrink-0 shadow-sm">
-            <span className="text-base leading-none">🥦</span>
+          <div className="w-8 h-8 rounded-xl overflow-hidden flex-shrink-0 shadow-sm">
+            <img src="/GroceryICON.png" alt="Grocery" className="w-full h-full object-cover" />
           </div>
           <div className="leading-none">
             <span className="text-sm font-bold text-gray-900 tracking-tight">Nananast </span>
