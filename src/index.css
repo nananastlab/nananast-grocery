@@ -3,10 +3,35 @@
 @tailwind utilities;
 
 @layer base {
-  html { -webkit-tap-highlight-color: transparent; }
-  body { @apply bg-gray-50 text-gray-900 antialiased; }
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-stone-100 text-gray-900 antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
 }
 
 @layer utilities {
-  .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+  .safe-bottom { padding-bottom: max(env(safe-area-inset-bottom), 8px); }
+  .cap { --tw-content: ''; }
+}
+
+@layer components {
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-sm text-gray-900
+           placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500
+           focus:border-transparent focus:bg-white transition-all duration-150;
+  }
+  .btn-primary {
+    @apply flex items-center justify-center gap-1.5 px-5 py-3 rounded-xl
+           bg-brand-600 text-white text-sm font-semibold
+           active:bg-brand-700 disabled:opacity-40 transition-colors duration-150;
+  }
+  .btn-ghost {
+    @apply flex items-center justify-center gap-1.5 px-5 py-3 rounded-xl
+           border border-gray-200 text-gray-600 text-sm font-medium
+           active:bg-gray-50 transition-colors duration-150;
+  }
 }
