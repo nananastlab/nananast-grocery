@@ -27,7 +27,7 @@ export default function App() {
       <header className="sticky top-0 z-10 bg-white/90 backdrop-blur-xl border-b border-gray-100">
         <div className="flex items-center gap-3 px-4 h-14">
           <div className="w-8 h-8 rounded-xl overflow-hidden flex-shrink-0 shadow-sm">
-            <img src="/GroceryICON.png" alt="Grocery" className="w-full h-full object-cover" />
+            <img src={`${import.meta.env.BASE_URL}GroceryICON.png`} alt="Grocery" className="w-full h-full object-cover" />
           </div>
           <div className="leading-none">
             <span className="text-sm font-bold text-gray-900 tracking-tight">Nananast </span>
@@ -44,7 +44,7 @@ export default function App() {
 
       {/* Content */}
       <main className="flex-1 overflow-y-auto">
-        {tab === 'recipes'   && <Recipes selectedRecipes={selectedRecipes} onToggleRecipe={toggleRecipe} />}
+        {tab === 'recipes'   && <Recipes selectedRecipes={selectedRecipes} onToggleRecipe={toggleRecipe} onSetSelected={setSelectedRecipes} />}
         {tab === 'shopping'  && <ShoppingList selectedRecipes={selectedRecipes} />}
         {tab === 'inventory' && <Inventory />}
       </main>
@@ -86,7 +86,7 @@ export default function App() {
 
 function RecipesIcon({ active }) {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={active ? '#15803d' : '#9ca3af'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={active ? '#068d61' : '#9ca3af'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/>
       <path d="M7 2v20"/>
       <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>
@@ -96,7 +96,7 @@ function RecipesIcon({ active }) {
 
 function CartIcon({ active }) {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={active ? '#15803d' : '#9ca3af'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={active ? '#068d61' : '#9ca3af'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/>
       <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
     </svg>
@@ -105,7 +105,7 @@ function CartIcon({ active }) {
 
 function BoxIcon({ active }) {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={active ? '#15803d' : '#9ca3af'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={active ? '#068d61' : '#9ca3af'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
       <path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/>
     </svg>

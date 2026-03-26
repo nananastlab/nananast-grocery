@@ -4,7 +4,7 @@ import RecipeForm from './RecipeForm'
 
 const cap = s => s ? s.charAt(0).toUpperCase() + s.slice(1) : s
 
-export default function Recipes({ selectedRecipes, onToggleRecipe }) {
+export default function Recipes({ selectedRecipes, onToggleRecipe, onSetSelected }) {
   const [recipes, setRecipes] = useState([])
   const [loading, setLoading] = useState(true)
   const [showForm, setShowForm] = useState(false)
@@ -63,6 +63,7 @@ export default function Recipes({ selectedRecipes, onToggleRecipe }) {
   }
 
   const isSelected = (id) => selectedRecipes.some(r => r.id === id)
+  const allSelected = recipes.length > 0 && recipes.every(r => isSelected(r.id))
 
   if (loading) return (
     <div className="p-4 space-y-3">
@@ -74,6 +75,27 @@ export default function Recipes({ selectedRecipes, onToggleRecipe }) {
 
   return (
     <div className="p-4 space-y-3 pb-6">
+      {recipes.length > 0 && !editingRecipe && (
+        <div className="flex justify-end">
+          <button
+            onClick={() => onSetSelected(allSelected ? [] : recipes)}
+            className="flex items-center gap-1.5 text-xs font-semibold text-brand-600 active:text-brand-800 transition-colors py-1 px-2 rounded-lg active:bg-brand-50"
+          >
+            {allSelected ? (
+              <>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                Tout désélectionner
+              </>
+            ) : (
+              <>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                Tout sélectionner
+              </>
+            )}
+          </button>
+        </div>
+      )}
+
       {recipes.length === 0 && !showForm && (
         <div className="text-center py-16">
           <div className="w-16 h-16 rounded-3xl bg-brand-50 flex items-center justify-center mx-auto mb-4">

@@ -16,7 +16,7 @@ export default defineConfig({
         name: 'Nananast Grocery',
         short_name: 'Grocery',
         description: 'Gestion de recettes et liste de courses',
-        theme_color: '#16a34a',
+        theme_color: '#07b27b',
         background_color: '#f9fafb',
         display: 'standalone',
         start_url: base,
