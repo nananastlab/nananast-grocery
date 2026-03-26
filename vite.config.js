@@ -11,7 +11,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['icon-192.svg', 'icon-512.svg'],
+      includeAssets: ['GroceryICON.png'],
       manifest: {
         name: 'Nananast Grocery',
         short_name: 'Grocery',
@@ -21,8 +21,9 @@ export default defineConfig({
         display: 'standalone',
         start_url: base,
         icons: [
-          { src: 'icon-192.svg', sizes: '192x192', type: 'image/svg+xml' },
-          { src: 'icon-512.svg', sizes: '512x512', type: 'image/svg+xml' }
+          { src: 'GroceryICON.png', sizes: '192x192', type: 'image/png' },
+          { src: 'GroceryICON.png', sizes: '512x512', type: 'image/png' },
+          { src: 'GroceryICON.png', sizes: '512x512', type: 'image/png', purpose: 'any maskable' }
         ]
       },
       workbox: {
