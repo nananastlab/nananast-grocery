@@ -1,0 +1,85 @@
+[
+  {
+    "nom": "Gnocchis épinards",
+    "portions": 3,
+    "ingredients": [
+      { "nom": "Gnocchis à poêler", "quantite": null, "unite": "", "categorie": "Frais" },
+      { "nom": "Epinards hachés", "quantite": null, "unite": "", "categorie": "Surgelés" },
+      { "nom": "Crème semi fluide", "quantite": null, "unite": "", "categorie": "Produits laitiers" },
+      { "nom": "Bouillon cube", "quantite": null, "unite": "", "categorie": "Épicerie salée" }
+    ]
+  },
+  {
+    "nom": "Pâtes au saumon",
+    "portions": 3,
+    "ingredients": [
+      { "nom": "Tagliatelles fraîches", "quantite": null, "unite": "", "categorie": "Frais" },
+      { "nom": "Filet de saumon", "quantite": null, "unite": "", "categorie": "Poissons" },
+      { "nom": "Citron", "quantite": null, "unite": "", "categorie": "Fruits" }
+    ]
+  },
+  {
+    "nom": "Gratin de brocolis",
+    "portions": 3,
+    "ingredients": [
+      { "nom": "Pommes de terre", "quantite": null, "unite": "", "categorie": "Légumes" },
+      { "nom": "Brocolis", "quantite": null, "unite": "", "categorie": "Surgelés" },
+      { "nom": "Feta", "quantite": null, "unite": "", "categorie": "Fromage" }
+    ]
+  },
+  {
+    "nom": "Chili sin carne",
+    "portions": 3,
+    "ingredients": [
+      { "nom": "Haricots rouges", "quantite": 1, "unite": "boite", "categorie": "Conserves" },
+      { "nom": "Maïs", "quantite": 1, "unite": "petite boite", "categorie": "Conserves" },
+      { "nom": "Chair de tomates", "quantite": 1, "unite": "boite", "categorie": "Conserves" },
+      { "nom": "Crème fraîche", "quantite": null, "unite": "", "categorie": "Produits laitiers" },
+      { "nom": "Cumin", "quantite": null, "unite": "", "categorie": "Épicerie salée" },
+      { "nom": "Riz", "quantite": null, "unite": "", "categorie": "Épicerie salée" }
+    ]
+  },
+  {
+    "nom": "Dahl de lentilles",
+    "portions": 3,
+    "ingredients": [
+      { "nom": "Lentilles corail", "quantite": 200, "unite": "g", "categorie": "Épicerie salée" },
+      { "nom": "Lait de coco", "quantite": 1, "unite": "brique", "categorie": "Autres" },
+      { "nom": "Oignon", "quantite": 1, "unite": "", "categorie": "Légumes" },
+      { "nom": "Ail", "quantite": 1, "unite": "gousse", "categorie": "Légumes" },
+      { "nom": "Garam masala", "quantite": null, "unite": "", "categorie": "Épicerie salée" },
+      { "nom": "Gingembre", "quantite": null, "unite": "", "categorie": "Épicerie salée" }
+    ]
+  },
+  {
+    "nom": "Poireaux riz",
+    "portions": 3,
+    "ingredients": [
+      { "nom": "Poireaux", "quantite": 4, "unite": "", "categorie": "Légumes" },
+      { "nom": "Riz", "quantite": null, "unite": "", "categorie": "Épicerie salée" },
+      { "nom": "Crème fraîche", "quantite": null, "unite": "", "categorie": "Produits laitiers" }
+    ]
+  },
+  {
+    "nom": "Lasagnes aux épinards",
+    "portions": 3,
+    "ingredients": [
+      { "nom": "Epinards hachés", "quantite": 2, "unite": "paquets", "categorie": "Surgelés" },
+      { "nom": "Crème semi fluide", "quantite": 2, "unite": "briques", "categorie": "Produits laitiers" },
+      { "nom": "Lasagnes", "quantite": 1, "unite": "paquet", "categorie": "Épicerie salée" },
+      { "nom": "Parmesan", "quantite": null, "unite": "", "categorie": "Fromage" }
+    ]
+  },
+  {
+    "nom": "Galettes",
+    "portions": 3,
+    "ingredients": [
+      { "nom": "Galettes de sarrasin", "quantite": null, "unite": "", "categorie": "Frais" },
+      { "nom": "Champignons", "quantite": null, "unite": "", "categorie": "Légumes" },
+      { "nom": "Jambon", "quantite": null, "unite": "", "categorie": "Viandes" },
+      { "nom": "Pommes de terre", "quantite": null, "unite": "", "categorie": "Légumes" },
+      { "nom": "Œufs", "quantite": null, "unite": "", "categorie": "Autres" },
+      { "nom": "Fromage râpé", "quantite": null, "unite": "", "categorie": "Fromage" }
+    ]
+  }
+]

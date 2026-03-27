@@ -45,7 +45,7 @@ export default function App() {
       {/* Content */}
       <main className="flex-1 overflow-y-auto">
         {tab === 'recipes'   && <Recipes selectedRecipes={selectedRecipes} onToggleRecipe={toggleRecipe} onSetSelected={setSelectedRecipes} />}
-        {tab === 'shopping'  && <ShoppingList selectedRecipes={selectedRecipes} />}
+        {tab === 'shopping'  && <ShoppingList selectedRecipes={selectedRecipes} onSetSelected={setSelectedRecipes} />}
         {tab === 'inventory' && <Inventory />}
       </main>
 

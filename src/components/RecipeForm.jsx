@@ -215,7 +215,7 @@ export default function RecipeForm({ onAdded, onCancel, recipe, onSaved }) {
                       className="input-field col-span-3 !py-2 !bg-white"
                       placeholder="Unité"
                       value={ing.unite}
-                      onChange={e => updateIng(i, 'unite', e.target.value)}
+                      onChange={e => updateIng(i, 'unite', e.target.value.toLowerCase())}
                     />
                     <button
                       type="button"

@@ -144,7 +144,7 @@ export default function Recipes({ selectedRecipes, onToggleRecipe, onSetSelected
 
               {/* Title */}
               <button className="flex-1 text-left min-w-0" onClick={() => toggleExpand(recipe.id)}>
-                <div className={`font-semibold truncate transition-colors ${selected ? 'text-brand-800' : 'text-gray-900'}`}>
+                <div className={`font-semibold break-words transition-colors ${selected ? 'text-brand-800' : 'text-gray-900'}`}>
                   {cap(recipe.nom)}
                 </div>
                 <div className="text-xs text-gray-400 mt-0.5">
