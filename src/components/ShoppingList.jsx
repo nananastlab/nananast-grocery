@@ -118,6 +118,15 @@ export default function ShoppingList({ selectedRecipes, onSetSelected }) {
     setManuelItems(prev => prev.map(m => m.id === item.id ? { ...m, coche: newCoche } : m))
   }
 
+  function removeItem(item) {
+    if (item.isManuel) {
+      supabase.from('liste_manuelle').delete().eq('id', item.id)
+      setManuelItems(prev => prev.filter(m => m.id !== item.id))
+    } else {
+      setShoppingItems(prev => prev.filter(i => !(i.nom === item.nom && i.unite === item.unite)))
+    }
+  }
+
   async function clearAll() {
     await supabase.from('liste_manuelle').delete().not('id', 'is', null)
     onSetSelected([])
@@ -369,8 +378,8 @@ export default function ShoppingList({ selectedRecipes, onSetSelected }) {
 
                       return (
                         <div key={item.isManuel ? `m:${item.id}` : item.nom}>
+                          <SwipeableItem onDelete={() => removeItem(item)} addBorderTop={i > 0}>
                           <div className={`flex items-center gap-3 px-4 py-3.5 transition-colors
-                            ${i > 0 ? 'border-t border-gray-50' : ''}
                             ${done ? 'bg-gray-50/60' : ''}`}
                           >
                             {/* Check button */}
@@ -424,6 +433,7 @@ export default function ShoppingList({ selectedRecipes, onSetSelected }) {
                               <span className="w-7 h-7 flex-shrink-0" />
                             )}
                           </div>
+                          </SwipeableItem>
 
                           {/* Source dropdown */}
                           {srcOpen && (
@@ -859,6 +869,114 @@ function AddIngredientModal({ onAdded, onClose }) {
             </button>
           </div>
         </form>
+      </div>
+    </div>
+  )
+}
+
+// ── Swipe-to-delete ──────────────────────────────────────────────────────────
+
+function SwipeableItem({ onDelete, addBorderTop, children }) {
+  const DELETE_W = 80
+  const offsetRef = useRef(0)
+  const [offsetState, setOffsetState] = useState(0)
+  const [anim, setAnim] = useState(false)
+  const startX = useRef(0)
+  const startY = useRef(0)
+  const startOffset = useRef(0)
+  const isHoriz = useRef(null)
+  const snapToRef = useRef(null)
+  const containerRef = useRef(null)
+
+  function snapTo(target) {
+    setAnim(true)
+    offsetRef.current = target
+    setOffsetState(target)
+  }
+  snapToRef.current = snapTo
+
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+
+    function onTouchStart(e) {
+      if (e.target.closest('[data-nodelete]')) return
+      startX.current = e.touches[0].clientX
+      startY.current = e.touches[0].clientY
+      startOffset.current = offsetRef.current
+      isHoriz.current = null
+      setAnim(false)
+    }
+
+    function onTouchMove(e) {
+      const dx = e.touches[0].clientX - startX.current
+      const dy = e.touches[0].clientY - startY.current
+
+      if (isHoriz.current === null) {
+        if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+          isHoriz.current = Math.abs(dx) > Math.abs(dy)
+        }
+        return
+      }
+      if (!isHoriz.current) return
+
+      e.preventDefault()
+      const clamped = Math.min(0, Math.max(startOffset.current + dx, -DELETE_W))
+      offsetRef.current = clamped
+      setOffsetState(clamped)
+    }
+
+    function onTouchEnd() {
+      if (!isHoriz.current) return
+      snapToRef.current(offsetRef.current < -DELETE_W * 0.4 ? -DELETE_W : 0)
+    }
+
+    el.addEventListener('touchstart', onTouchStart, { passive: true })
+    el.addEventListener('touchmove', onTouchMove, { passive: false })
+    el.addEventListener('touchend', onTouchEnd, { passive: true })
+    el.addEventListener('touchcancel', onTouchEnd, { passive: true })
+    return () => {
+      el.removeEventListener('touchstart', onTouchStart)
+      el.removeEventListener('touchmove', onTouchMove)
+      el.removeEventListener('touchend', onTouchEnd)
+      el.removeEventListener('touchcancel', onTouchEnd)
+    }
+  }, [])
+
+  return (
+    <div ref={containerRef} className="relative overflow-hidden">
+      {/* Zone rouge révélée au swipe */}
+      <div
+        data-nodelete
+        className="absolute inset-y-0 right-0 bg-red-500 flex items-center justify-center"
+        style={{ width: DELETE_W }}
+      >
+        <button
+          type="button"
+          data-nodelete
+          onClick={() => { snapTo(0); onDelete() }}
+          className="flex flex-col items-center gap-0.5 text-white px-3 h-full justify-center"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="3 6 5 6 21 6"/>
+            <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+            <path d="M10 11v6M14 11v6"/>
+            <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>
+          </svg>
+          <span className="text-[10px] font-bold">Supprimer</span>
+        </button>
+      </div>
+      {/* Contenu glissant */}
+      <div
+        className={`bg-white${addBorderTop ? ' border-t border-gray-50' : ''}`}
+        style={{
+          transform: `translateX(${offsetState}px)`,
+          transition: anim ? 'transform 0.2s ease-out' : 'none',
+          willChange: 'transform',
+        }}
+        onTransitionEnd={() => setAnim(false)}
+      >
+        {children}
       </div>
     </div>
   )
